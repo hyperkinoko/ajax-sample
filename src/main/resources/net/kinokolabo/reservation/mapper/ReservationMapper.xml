@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.kinokolabo.reservation.mapper.ReservationMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO RESERVATION (START_DATETIME, END_DATETIME, STUDENT_ID, PRICE) VALUES (#{startDatetime}, #{endDatetime}, #{studentId}, #{price});
+    </insert>
+    <select id="selectByStudent" resultType="net.kinokolabo.reservation.domain.Reservation">
+        SELECT * FROM RESERVATION WHERE ID=#{studentId}
+    </select>
+    <select id="selectAll" resultType="net.kinokolabo.reservation.domain.Reservation">
+        SELECT * FROM RESERVATION
+    </select>
+</mapper>

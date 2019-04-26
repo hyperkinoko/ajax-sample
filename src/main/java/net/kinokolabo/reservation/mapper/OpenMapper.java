@@ -1,13 +1,15 @@
 package net.kinokolabo.reservation.mapper;
 
-import net.kinokolabo.reservation.domain.Open;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.ArrayList;
-import java.sql.Date;
+import net.kinokolabo.reservation.domain.Open;
 
 @Mapper
 public interface OpenMapper {
     ArrayList<Open> selectAll();
-    ArrayList<Open> selectAllWithDateRange(Date start, Date end);
+    ArrayList<Open> selectAllWithDateRange(Timestamp start, Timestamp end);
+    boolean delete(int id);
 }
