@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.kinokolabo.reservation.mapper.MemberMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO MEMBER (NAME) VALUES (#{name})
+    </insert>
+    <update id="update">
+        UPDATE MEMBER SET NAME　=　#{name}, MAIL = #{mail}, PASSWD = #{passwd} WHERE ID=#{id}
+    </update>
+    <select id="selectById" resultType="net.kinokolabo.reservation.domain.Member">
+        SELECT * FROM MEMBER WHERE ID=#{id}
+    </select>
+</mapper>

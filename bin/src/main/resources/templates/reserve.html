@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>キノコラボ 予約サイト</title>
+</head>
+<body>
+<ul>
+    <li th:each="open : ${opens}" th:text="${open.start}"></li>
+</ul>
+</body>
+</html>

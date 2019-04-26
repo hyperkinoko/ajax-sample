@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>会員登録</h2>
+<form action="#" th:action="@{/member/commit}" th:object="${member}" method="post">
+    <!--int id = 0;-->
+    <!--String lineId;-->
+    <!--String reqName;-->
+    <!--String calDispName;-->
+    <!--Date birthday;-->
+
+    <label for="requestName">お名前:</label><input type="text" th:field="*{requestName}" id="requestName" name="requestName" />
+    <label for="mail">メールアドレス:</label><input type="text" th:field="*{mail}" id="mail" name="mail" />
+    <input type="hidden" th:field="*{id}" name="id"/>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+</body>
+</html>
