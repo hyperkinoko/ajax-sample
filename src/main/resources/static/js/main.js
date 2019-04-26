@@ -29,7 +29,7 @@ $(function() {
     });
 
     $.ajax({
-        url: 'hhttps://kinokolabo-reserve.herokuapp.com/open',
+        url: './open',
         type: 'GET',
         // dataType: 'json',
         // // フォーム要素の内容をハッシュ形式に変換
