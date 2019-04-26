@@ -27,7 +27,6 @@ public class ReservationController {
     @Autowired
     OpenMapper openMapper;
 
-
     @RequestMapping(value = "/open", method = RequestMethod.GET)
     public ArrayList<Open> getOpen(@RequestParam(defaultValue = "0") Integer year,
                                    @RequestParam(defaultValue = "0") Integer month,

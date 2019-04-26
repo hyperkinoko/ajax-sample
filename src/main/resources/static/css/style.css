@@ -1,0 +1,320 @@
+@charset "UTF-8";
+/*
+Theme Name: KINOKOLaboオリジナルテーマ
+Author: Kinoko
+Description: KINOKOLaboオリジナルテーマ
+version: 1.0
+*/
+
+html {
+	font-family: sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	position: relative;
+	overflow-x: hidden;
+	color: black;
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: green; }
+
+
+li {
+	list-style-type: none;
+}
+
+
+/* メニュー・PC.スマホ共通 */
+#top-header {
+	border-bottom: solid green 2px;
+	background-color: white;
+}
+
+#header-logo-wrapper {
+	background-color: white;
+	padding: 10px;
+	margin: 0;
+}
+
+#header-logo-wrapper img {
+	height: 80px;
+	vertical-align: top;
+}
+
+#icon-area {
+	display: flex;
+	position: absolute;
+	justify-content: flex-end;
+	right: 0;
+	top: 0;
+	padding: 10px;
+}
+
+.icon {
+	width: 30px;
+	height: 30px;
+	padding: 0 5px;
+}
+
+.icon:last-child {
+	padding-right: 0;
+}
+
+.icon img {
+	width: 100%;
+}
+
+nav {
+	/*flex: 1;*/
+	background-color: white;
+	padding: 0 10px; /* メニューの両端にスペースを作るならこのパッディングを使うといい */
+	margin: 0;
+}
+
+/* メニュー・PC用 */
+@media screen and (min-device-width: 650px) {
+	.menu-top {
+		display: flex;
+		justify-content: stretch;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+
+	#menu-top li {
+		font-size: 18px;
+		padding: 15px 15px 5px 15px;
+	}
+	#menu-top li:hover {
+		background-color: #f8ffe0;
+		color: white;
+	}
+}
+
+/* メニュー・スマホ用 */
+@media screen and (max-device-width: 650px) {
+	#top-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+
+	#nav-toggle {
+		height: 30px;
+		background-color: white;
+		padding: 10px 0;
+		margin: 0; }
+
+	#nav-toggle div {
+		position: relative;
+		cursor: pointer;
+		height: 100%;
+		width: 30px; }
+
+	#nav-toggle span {
+		display: block;
+		position: absolute;
+		height: 4px;
+		width: 100%;
+		background: green;
+		left: 0;
+		-webkit-transition: .35s ease-in-out;
+		-moz-transition: .35s ease-in-out;
+		transition: .35s ease-in-out; }
+
+	#nav-toggle span:nth-child(1) {
+		top: 0; }
+
+	#nav-toggle span:nth-child(2) {
+		top: 40%; }
+
+	#nav-toggle span:nth-child(3) {
+		top: 80%; }
+
+	#nav-toggle.open span:nth-child(1) {
+		top: 40%;
+		-webkit-transform: rotate(315deg);
+		-moz-transform: rotate(315deg);
+		transform: rotate(315deg); }
+	#nav-toggle.open span:nth-child(2) {
+		width: 0;
+		left: 50%; }
+	#nav-toggle.open span:nth-child(3) {
+		top: 40%;
+		-webkit-transform: rotate(-315deg);
+		-moz-transform: rotate(-315deg);
+		transform: rotate(-315deg); }
+
+	#menu-top {
+		background-color: rgba(245, 255, 179, 0.9);
+		position: fixed;
+		right: -300px;
+		width: 250px;
+		text-align: center;
+		margin: 2px 0 0 0;
+		padding: 20px;
+		z-index: 3;
+		-webkit-transition: .5s ease-in-out;
+		-moz-transition: .5s ease-in-out;
+		transition: .5s ease-in-out; }
+	#menu-top li {
+		padding: 10px 0;
+		border-bottom: dotted red 3px; }
+	#menu-top.open {
+		right: 0; }
+}
+
+.is-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	width: 100%;
+}
+
+.main {
+	margin: 0;
+	padding: 0;
+}
+
+.page-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 10px;
+	background-color: rgba(230, 70, 38, 0.55);
+	background-image: radial-gradient(circle farthest-side, white 40%, transparent 20%), radial-gradient(circle farthest-side, white 40%, transparent 20%);
+	background-size: 80px 80px;
+	background-position: 0 0, 40px 40px;
+
+	/*background: -webkit-radial-gradient(rgba(255,255,255,1) 0, rgb(255,255,255) 15%, rgba(0,0,0,0) 16%, rgba(0,0,0,0) 100%),*/
+	/*-webkit-radial-gradient(rgb(255,255,255) 15%, rgba(0,0,0,0) 16%), rgba(71,71,71,1);*/
+	/*!*background: radial-gradient(rgba(255,255,255,1) 0, rgb(255,255,255) 15%, rgba(0,0,0,0) 16%, rgba(0,0,0,0) 100%),*!*/
+	/*!*radial-gradient(rgb(255,255,255) 15%, rgba(0,0,0,0) 16%), rgba(71,71,71,1);*!*/
+	/*background-position: 0 0, 30px 30px;*/
+	/*-webkit-background-size: 60px 60px;*/
+	/*background-size: 60px 60px;*/
+}
+
+h1 {
+	font-family: 'ヒラギノ丸ゴ ProN W4', 'Hiragino Maru Gothic ProN', sans-serif;
+	margin: 0;
+	padding: 0;
+	color: green;
+}
+
+
+@media screen and (min-device-width: 650px) {
+	.page-title {
+		height: 200px;
+	}
+	h1 {
+		font-size: 40px;
+		text-shadow: 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff, -2px -2px 1px #fff;
+	}
+}
+
+@media screen and (max-device-width: 650px) {
+	.page-title {
+		height: 100px;
+	}
+	h1 {
+		font-size: 26px;
+		text-shadow: 1px 1px 1px #fff, -1px 1px 1px #fff, 1px -1px 1px #fff, -1px -1px 1px #fff;
+	}
+}
+
+
+@media screen and (max-device-width: 650px) {
+	#main-sidebar-wrapper {
+		margin: 0;
+		padding: 0;
+	}
+	main {
+		margin: 0;
+		padding: 0;
+	}
+
+	#sidebar {
+		margin: 10px;
+		padding: 5px;
+	}
+
+	.textwidget {
+		margin: 0 10px;
+		text-align: center;
+	}
+
+
+}
+
+@media screen and (min-device-width: 650px) {
+	#main-sidebar-wrapper {
+		display: flex;
+		margin: 40px;
+	}
+
+	main {
+		flex: 1;
+		margin: 0;
+		padding: 0;
+	}
+
+	#sidebar {
+		width: 360px;
+		margin: 10px;
+		padding: 5px;
+	}
+}
+
+article {
+	margin: 10px;
+	padding: 5px;
+}
+
+article p {
+	margin: 16px 0 16px 10px;
+}
+
+h2 {
+	position: relative;
+	font-family: 'ヒラギノ丸ゴ ProN W4', 'Hiragino Maru Gothic ProN', sans-serif;
+	font-size: 20px;
+	margin: 0;
+	color: green;
+	padding: 10px 10px 0 10px;
+	text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+}
+
+h2:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	max-width: 300px;
+	background-color: rgba(230, 70, 38, 0.55);
+	background-image: radial-gradient(circle farthest-side, white 40%, transparent 20%), radial-gradient(circle farthest-side, white 40%, transparent 20%);
+	background-size: 20px 20px;
+	background-position: 0 0, 10px 10px;
+	z-index: -1;
+	height: 10px;
+
+}
+
+footer {
+	text-align: center;
+	padding: 20px 30px;
+	background-color: khaki;
+}
