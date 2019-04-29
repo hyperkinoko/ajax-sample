@@ -337,7 +337,13 @@ footer {
 	border: solid 3px white;
 }
 
-.calender .open {
+.calender-wrapper .open {
 	border-radius: 40%;
 	background-color: rgba(230, 70, 38, 0.55);
+}
+
+.calender-wrapper span.open {
+	display: inline-block;
+	height: 1.8rem;
+	width: 1.8rem;
 }
