@@ -109,10 +109,12 @@ function getAndReflectOpenData() {
 function reflect() {
     // 文字列をDateに変換
     openData.forEach(open => {
+        open.startDatetime = open.startDatetime.replace("+0000", "Z");
+        open.endDatetime = open.endDatetime.replace("+0000", "Z");
         open.startDatetime = new Date(open.startDatetime);
         open.endDatetime = new Date(open.endDatetime);
     });
-    console.log(openData);
+    // console.log(openData);
     for(let index = 0; index < 2; index++) {
         let lastDayOfMonth = new Date(year, month + index, 0);
 
