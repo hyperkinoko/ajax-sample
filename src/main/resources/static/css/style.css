@@ -83,7 +83,7 @@ nav {
 
 /* メニュー・PC用 */
 @media screen and (min-device-width: 650px) {
-	.menu-top {
+	#menu-top {
 		display: flex;
 		justify-content: stretch;
 		text-align: center;
@@ -92,12 +92,13 @@ nav {
 	}
 
 	#menu-top li {
+		color: #008000;
 		font-size: 18px;
 		padding: 15px 15px 5px 15px;
 	}
 	#menu-top li:hover {
-		background-color: #f8ffe0;
-		color: white;
+		background-color: #f0e68c;
+		color: #008000;
 	}
 }
 
@@ -316,5 +317,27 @@ h2:after {
 footer {
 	text-align: center;
 	padding: 20px 30px;
-	background-color: khaki;
+	background-color: #f0e68c;
+}
+
+#calender-wrapper {
+	width: 200px;
+
+}
+
+.calender {
+	text-align: center;
+}
+
+.calender table {
+	margin: 0 auto;
+}
+.calender td,th {
+	padding: 3px;
+	border: solid 3px white;
+}
+
+.calender .open {
+	border-radius: 40%;
+	background-color: rgba(230, 70, 38, 0.55);
 }

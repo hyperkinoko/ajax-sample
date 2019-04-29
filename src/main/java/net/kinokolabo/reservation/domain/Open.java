@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Open {
 	private int id = 0;
 	private Timestamp startDatetime;
-	private Timestamp endDateTime;
+	private Timestamp endDatetime;
 
 	public int getId() {
 		return id;
@@ -19,10 +19,14 @@ public class Open {
 	public void setStartDatetime(Timestamp startDatetime) {
 		this.startDatetime = startDatetime;
 	}
-	public Timestamp getEndDateTime() {
-		return endDateTime;
+	public Timestamp getEndDatetime() {
+		return endDatetime;
 	}
-	public void setEndDateTime(Timestamp endDateTime) {
-		this.endDateTime = endDateTime;
+	public void setEndDatetime(Timestamp endDatetime) {
+		this.endDatetime = endDatetime;
+	}
+
+	public String toString() {
+		return "[" + id + " : " + startDatetime.toLocalDateTime() + " : " + endDatetime.toLocalDateTime() + "]";
 	}
 }

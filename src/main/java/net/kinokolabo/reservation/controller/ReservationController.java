@@ -4,11 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import net.kinokolabo.reservation.domain.Member;
 import net.kinokolabo.reservation.domain.Open;
@@ -36,6 +32,15 @@ public class ReservationController {
 
         ArrayList<Open> list = openMapper.selectAll();
         return list;
+    }
+
+    @RequestMapping(value = "/open/set", method = RequestMethod.POST)
+    @ResponseBody
+    public String setOpen(@RequestBody ArrayList<Open> list) {
+        if(openMapper.insert(list)) {
+            return "成功した";
+        }
+        return "失敗した";
     }
 
     @RequestMapping(value = "/reservation", method = RequestMethod.GET)

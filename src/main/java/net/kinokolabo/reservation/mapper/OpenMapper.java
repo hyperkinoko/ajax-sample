@@ -12,4 +12,5 @@ public interface OpenMapper {
     ArrayList<Open> selectAll();
     ArrayList<Open> selectAllWithDateRange(Timestamp start, Timestamp end);
     boolean delete(int id);
+    boolean insert(ArrayList<Open> list);
 }
