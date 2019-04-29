@@ -37,10 +37,9 @@ public class ReservationController {
     @RequestMapping(value = "/open/set", method = RequestMethod.POST)
     @ResponseBody
     public String setOpen(@RequestBody ArrayList<Open> list) {
-        if(openMapper.insert(list)) {
-            return "成功した";
-        }
-        return "失敗した";
+        openMapper.deleteAll();
+        int inserted = openMapper.insert(list);
+        return inserted + "件insertしました";
     }
 
     @RequestMapping(value = "/reservation", method = RequestMethod.GET)
