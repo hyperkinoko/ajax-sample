@@ -77,16 +77,21 @@ public class ReservationController {
 //        return list;
 //    }
 
-    @RequestMapping(value = "/member", method = RequestMethod.GET)
-    public String commitUser(@RequestParam(defaultValue = "0") String id, Model model) {
-        Member member = memberMapper.selectById(Integer.parseInt(id));
-        if(member == null) {
-            member = new Member();
-        }
-        System.out.println(member.getId());
-        model.addAttribute("member", member);
-        return "member_commit";
-    }
+//    @RequestMapping(value = "/member", method = RequestMethod.GET)
+//    public Member commitUser(@RequestParam(defaultValue = "0") String idStr, Model model) {
+//        Member member;
+//        try{
+//            int id = Integer.parseInt(idStr);
+//            if(id == 0) {
+//                member = new Member();
+//            } else {
+//                member = memberMapper.selectById(id);
+//            }
+//        } catch (NumberFormatException e) {
+//            return null;
+//        }
+//        return member;
+//    }
 
     @RequestMapping(value = "/member/commit", method = RequestMethod.POST)
     public String commitUser(@ModelAttribute("user") Member member, Model model) {

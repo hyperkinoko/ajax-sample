@@ -5,9 +5,9 @@ import java.sql.Date;
 public class Member {
     private int id = 0;
     private String lineId;
-    private String name;
-    private String mail;
-    private String passwd;
+    private String name = "新しい名前";
+    private String mail = "";
+    private String passwd = "";
 
     public int getId() {
         return id;
