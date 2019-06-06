@@ -23,7 +23,7 @@ public class ReservationController {
     @Autowired
     OpenMapper openMapper;
 
-    @CrossOrigin(origins={"https://kinokodata.net", "http://localhost:8080"})
+    @CrossOrigin(origins={"https://kinokodata.net", "http://localhost:*"})
     @RequestMapping(value = "/open", method = RequestMethod.GET)
     public ArrayList<Open> getOpen(@RequestParam(defaultValue = "0") Integer year,
                                    @RequestParam(defaultValue = "0") Integer month,
