@@ -15,20 +15,23 @@ public class MemberController {
     MemberMapper memberMapper;
 
     @GetMapping("/member")
-    public String getMember(@RequestParam(defaultValue = "0") String idStr, Model model) {
+    public String getMember(@RequestParam(defaultValue = "0") String id, Model model) {
         Member member;
         try{
-            int id = Integer.parseInt(idStr);
-            if(id == 0) {
+            int idInt = Integer.parseInt(id);
+            if(idInt == 0) {
                 member = new Member();
             } else {
-                member = memberMapper.selectById(id);
+                member = memberMapper.selectById(idInt);
             }
         } catch (NumberFormatException e) {
-            return null;
+            return "error";
+        }
+        if(member == null) {
+            return "error";
         }
         System.out.println("member: " + member.getName());
         model.addAttribute("member", member);
-        return "member_detail";
+        return "member";
     }
 }
