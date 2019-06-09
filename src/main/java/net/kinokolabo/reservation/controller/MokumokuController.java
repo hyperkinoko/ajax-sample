@@ -34,5 +34,6 @@ public class MokumokuController {
         Mokumoku mokumoku = new Mokumoku();
         mokumoku.setIsVacant(value);
         mapper.update(mokumoku);
+        return "成功した";
     }
 }
