@@ -25,7 +25,7 @@ public class MokumokuController {
     @RequestMapping(value = "/mokumoku/is-vacant", method = RequestMethod.GET)
     public String isVacant() {
         Mokumoku mokumoku = mapper.select();
-        return "{\"vacant\":" + mokumoku.getIsVacant();
+        return "{\"vacant\":" + mokumoku.getIsVacant() + "}";
     }
 
     @RequestMapping(value = "/mokumoku/set-vacant", method = RequestMethod.GET)
