@@ -34,6 +34,7 @@ public class MokumokuController {
     public String setOpen(@RequestParam("value") String value) {
         Mokumoku mokumoku = new Mokumoku();
         mokumoku.setIsVacant(Boolean.parseBoolean(value));
+        System.out.println(mokumoku.getIsVacant());
         mapper.update(mokumoku);
         return "成功した";
     }
