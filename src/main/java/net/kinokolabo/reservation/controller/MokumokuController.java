@@ -30,9 +30,9 @@ public class MokumokuController {
 
     @RequestMapping(value = "/mokumoku/set-vacant", method = RequestMethod.GET)
     @ResponseBody
-    public String setOpen(@RequestBody Boolean value) {
+    public String setOpen(@RequestBody String value) {
         Mokumoku mokumoku = new Mokumoku();
-        mokumoku.setIsVacant(value);
+        mokumoku.setIsVacant(Boolean.parseBoolean(value));
         mapper.update(mokumoku);
         return "成功した";
     }
