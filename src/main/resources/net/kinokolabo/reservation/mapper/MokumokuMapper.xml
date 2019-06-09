@@ -4,7 +4,7 @@
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.kinokolabo.reservation.mapper.MokumokuMapper">
     <update id="update">
-        UPDATE MOKUMOKU SET IS_VACANT　=　#{isVacant};
+        UPDATE MOKUMOKU SET IS_VACANT = #{isVacant};
     </update>
     <select id="select" resultType="net.kinokolabo.reservation.domain.Mokumoku">
         SELECT * FROM MOKUMOKU LIMIT 1;
