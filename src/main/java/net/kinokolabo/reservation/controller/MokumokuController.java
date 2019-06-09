@@ -1,5 +1,6 @@
 package net.kinokolabo.reservation.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.kinokolabo.reservation.domain.Member;
 import net.kinokolabo.reservation.domain.Mokumoku;
 import net.kinokolabo.reservation.domain.Open;
@@ -30,9 +31,9 @@ public class MokumokuController {
 
     @RequestMapping(value = "/mokumoku/set-vacant", method = RequestMethod.GET)
     @ResponseBody
-    public String setOpen(@RequestParam("value") Boolean value) {
+    public String setOpen(@RequestParam("value") String value) {
         Mokumoku mokumoku = new Mokumoku();
-        mokumoku.setIsVacant(value);
+        mokumoku.setIsVacant(Boolean.parseBoolean(value));
         mapper.update(mokumoku);
         return "成功した";
     }
