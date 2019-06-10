@@ -24,9 +24,9 @@ public class MokumokuController {
 
     @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
     @RequestMapping(value = "/mokumoku/is-vacant", method = RequestMethod.GET)
-    public String isVacant() {
+    public Mokumoku isVacant() {
         Mokumoku mokumoku = mapper.select();
-        return "{\"vacant\":" + mokumoku.getIsVacant() + "}";
+        return mokumoku;
     }
 
     @RequestMapping(value = "/mokumoku/set-vacant", method = RequestMethod.GET)
