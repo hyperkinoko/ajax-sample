@@ -14,6 +14,7 @@ public class MemberController {
     @Autowired
     MemberMapper memberMapper;
 
+    @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
     @GetMapping("/member")
     public String getMember(@RequestParam(defaultValue = "0") String id, Model model) {
         Member member;
@@ -34,7 +35,8 @@ public class MemberController {
         model.addAttribute("member", member);
         return "member";
     }
-    
+
+    @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
     @PostMapping("/member/regist")
     public String setMember(@RequestBody MemberForm form) {
 //        System.out.println("id:" + form.getId());
