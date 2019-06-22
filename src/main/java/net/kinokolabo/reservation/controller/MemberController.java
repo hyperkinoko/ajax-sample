@@ -52,6 +52,6 @@ public class MemberController {
 
         int inserted = memberMapper.insert(m);
 
-        return inserted;
+        return m.getId();
     }
 }
