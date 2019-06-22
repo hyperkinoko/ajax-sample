@@ -4,19 +4,20 @@ import javax.validation.constraints.NotBlank;
 
 public class MemberForm {
 //	@NotBlank
-//	private int id = 0;
+	private int id = 0;
 	private String name = "";
 	private String nameKana = "";
 	private String zip = "";
 	private int pref = 0;
-	private String address = "";
-	private String telNo = "";
+	private String addr = "";
+	private String tel = "";
 	private String mail = "";
+	private String passwd = "";
 //	private String mailComfirm = "";
 
-//	public int getId() {
-//		return id;
-//	}
+	public int getId() {
+		return id;
+	}
 
 	public String getName() {
 		return name;
@@ -34,19 +35,24 @@ public class MemberForm {
 		return pref;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddr() {
+		return addr;
 	}
 
-	public String getTelNo() {
-		return telNo;
+	public String getTel() {
+		return tel;
 	}
 
 	public String getMail() {
 		return mail;
 	}
 
-//	public String getMailComfirm() {
+	public String getPasswd() {
+		return passwd;
+	}
+
+
+	//	public String getMailComfirm() {
 //		return mailComfirm;
 //	}
 }

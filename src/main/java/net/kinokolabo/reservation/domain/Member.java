@@ -4,10 +4,16 @@ import java.sql.Date;
 
 public class Member {
     private int id = 0;
-    private String lineId;
-    private String name = "新しい名前";
+//    private String lineId;
+    private String name = "";
+    private String nameKana = "";
+    private String zip = "";
+    private String addr = "";
+    private int pref = 0;
+    private String tel = "";
     private String mail = "";
     private String passwd = "";
+
 
     public int getId() {
         return id;
@@ -15,14 +21,6 @@ public class Member {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getLineId() {
-        return lineId;
-    }
-
-    public void setLineId(String lineId) {
-        this.lineId = lineId;
     }
 
     public String getName() {
@@ -33,13 +31,53 @@ public class Member {
         this.name = name;
     }
 
-    public String getMail() {
-		return mail;
-	}
+    public String getNameKana() {
+        return nameKana;
+    }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    public void setNameKana(String nameKana) {
+        this.nameKana = nameKana;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    public int getPref() {
+        return pref;
+    }
+
+    public void setPref(int pref) {
+        this.pref = pref;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
     public String getPasswd() {
         return passwd;

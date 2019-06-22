@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberMapper {
     Member selectById(int id);
-    boolean insert(Member member);
+    int insert(Member member);
     boolean update(Member member);
     boolean delete(int id);
 }

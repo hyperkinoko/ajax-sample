@@ -38,14 +38,20 @@ public class MemberController {
 
     @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
     @PostMapping("/member/regist")
-    public String setMember(@RequestBody MemberForm form) {
-//        System.out.println("id:" + form.getId());
-        System.out.println("name:" + form.getName());
-        System.out.println("addr:" + form.getAddress());
-        System.out.println("zip:" + form.getZip());
-        System.out.println("tel:" + form.getTelNo());
-        System.out.println("pref:" + form.getPref());
+    public int setMember(@RequestBody MemberForm form) {
+        Member m = new Member();
+        m.setId(form.getId());
+        m.setName(form.getName());
+        m.setNameKana(form.getNameKana());
+        m.setZip(form.getZip());
+        m.setPref(form.getPref());
+        m.setAddr(form.getAddr());
+        m.setTel(form.getTel());
+        m.setMail(form.getMail());
+        m.setPasswd(form.getPasswd());
 
-        return form.getName();
+        int inserted = memberMapper.insert(m);
+
+        return inserted;
     }
 }
