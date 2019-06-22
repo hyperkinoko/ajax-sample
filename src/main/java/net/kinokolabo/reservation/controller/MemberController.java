@@ -2,13 +2,13 @@ package net.kinokolabo.reservation.controller;
 
 import net.kinokolabo.reservation.domain.Member;
 import net.kinokolabo.reservation.mapper.MemberMapper;
+import net.kinokolabo.reservation.model.MemberForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class MemberController {
 
     @Autowired
@@ -33,5 +33,17 @@ public class MemberController {
         System.out.println("member: " + member.getName());
         model.addAttribute("member", member);
         return "member";
+    }
+    
+    @PostMapping("/member/regist")
+    public String setMember(@RequestBody MemberForm form) {
+//        System.out.println("id:" + form.getId());
+        System.out.println("name:" + form.getName());
+        System.out.println("addr:" + form.getAddress());
+        System.out.println("zip:" + form.getZip());
+        System.out.println("tel:" + form.getTelNo());
+        System.out.println("pref:" + form.getPref());
+
+        return form.getName();
     }
 }
