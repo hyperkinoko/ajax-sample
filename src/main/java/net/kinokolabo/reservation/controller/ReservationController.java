@@ -94,13 +94,4 @@ public class ReservationController {
 //        return member;
 //    }
 
-    @RequestMapping(value = "/member/commit", method = RequestMethod.POST)
-    public String commitUser(@ModelAttribute("user") Member member, Model model) {
-        if (member.getId() == 0) {
-            boolean result = memberMapper.insert(member);
-        } else {
-            boolean result = memberMapper.update(member);
-        }
-        return "member_commit";
-    }
 }
