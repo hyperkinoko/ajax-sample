@@ -4,7 +4,7 @@
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.kinokolabo.reservation.mapper.MemberMapper">
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO MEMBER (NAME, NAME_KANA, ZIP, PREF, ADDR, TEL, MAIL) VALUES (#{name}, #{nameKana}, #{zip}, #{pref}, #{addr}, #{tel} #{mail})
+        INSERT INTO MEMBER (NAME, NAME_KANA, ZIP, PREF, ADDR, TEL, MAIL, PASSWD) VALUES (#{name}, #{nameKana}, #{zip}, #{pref}, #{addr}, #{tel}, #{mail}, #{passwd})
     </insert>
     <update id="update">
         UPDATE MEMBER SET NAME　=　#{name}, MAIL = #{mail}, PASSWD = #{passwd} WHERE ID=#{id}
