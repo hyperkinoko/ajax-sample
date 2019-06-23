@@ -109,22 +109,22 @@ public class MemberController {
         }
     }
 
-    @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080", "192.168.*"})
+    @CrossOrigin
+//    @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080", "192.168.*"})
     @PostMapping("/student/visit")
-    public int setStudent(@RequestBody VisitModel model) {
+    @ResponseBody
+    public String setStudent(@RequestBody VisitModel model) {
         int studentId = model.getStudentId();
         JoinOrLeave jorl = JoinOrLeave.valueOf(model.getJoinOrLeave());
-
         Visit v = new Visit();
         v.setStudentId(studentId);
         v.setJoinOrLeave(jorl);
         v.setCourseId(model.getCourseId());
         v.setTime(Timestamp.valueOf(LocalDateTime.now()));
 
-        System.out.println("timestamp:" + v.getTime());
         int inserted  = visitMapper.insert(v);
         if(inserted != 1) {
-            return 0;
+            return "エラー";
         }
 
         //メールを送る
@@ -136,11 +136,11 @@ public class MemberController {
             if(mail != null && !mail.equals("")) {
                 System.out.println(v.getJoinOrLeave() + " => send mail to:" + mail);
                 if(!new Logic().sendMail(mStudent.getName(), jorl, new Email(mail))) {
-                    return 0;
+                    return "えらー";
                 }
             }
         }
-        return v.getId();
+        return "dd:" + v.getId();
     }
 }
 
