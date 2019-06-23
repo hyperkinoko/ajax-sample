@@ -93,7 +93,7 @@ public class MemberController {
 
         Student s = new Student();
         s.setMemberId(memberId);
-        s.setGuardienId(form.getGardianId());
+        s.setGuardianId(form.getGardianId());
         s.setNotice(form.isNotice() ? Notice.MAIL : Notice.NONE);
         LocalDateTime birthday = LocalDateTime.of(form.getbYear(), form.getbMonth(), form.getbDay(), 0, 0, 0);
         s.setBirthday(Timestamp.valueOf(birthday));
