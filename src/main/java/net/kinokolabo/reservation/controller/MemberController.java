@@ -89,6 +89,7 @@ public class MemberController {
 
             if(memberMapper.insert(m) == 1) {
                 memberId = m.getId();
+                System.out.println("memberid:" + memberId);
             } else {
                 return 0;
             }
@@ -103,6 +104,7 @@ public class MemberController {
 
         int inserted = studentMapper.insert(s);
         if(inserted == 1) {
+            System.out.println("studentid:" + s.getId());
             return s.getId();
         } else {
             return 0;
