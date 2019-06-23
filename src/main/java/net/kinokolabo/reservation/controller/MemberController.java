@@ -1,12 +1,12 @@
 package net.kinokolabo.reservation.controller;
 
-import net.kinokolabo.reservation.domain.Member;
-import net.kinokolabo.reservation.domain.Notice;
-import net.kinokolabo.reservation.domain.Student;
+import net.kinokolabo.reservation.domain.*;
 import net.kinokolabo.reservation.mapper.MemberMapper;
 import net.kinokolabo.reservation.mapper.StudentMapper;
+import net.kinokolabo.reservation.mapper.VisitMapper;
 import net.kinokolabo.reservation.model.MemberForm;
 import net.kinokolabo.reservation.model.StudentForm;
+import net.kinokolabo.reservation.model.VisitModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +21,9 @@ public class MemberController {
 
     @Autowired
     StudentMapper studentMapper;
+
+    @Autowired
+    VisitMapper visitMapper;
 
     @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
     @GetMapping("/member")
@@ -103,6 +106,24 @@ public class MemberController {
         if(inserted == 1) {
             System.out.println("studentid:" + s.getId());
             return s.getId();
+        } else {
+            return 0;
+        }
+    }
+
+    @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080", "192.168.*"})
+    @PostMapping("/student/visit")
+    public int setStudent(@RequestBody VisitModel model) {
+
+        Visit v = new Visit();
+        v.setStudentId(model.getStudentId());
+        v.setJoinOrLeave(JoinOrLeave.valueOf(model.getJoinOrLeave()));
+        v.setCourseId(model.getCourseId());
+        v.setTime(Timestamp.valueOf(LocalDateTime.now()));
+
+        int inserted  = visitMapper.insert(v);
+        if(inserted == 1) {
+            return v.getId();
         } else {
             return 0;
         }

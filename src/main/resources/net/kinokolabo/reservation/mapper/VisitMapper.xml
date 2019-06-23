@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.kinokolabo.reservation.mapper.VisitMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO VISIT (STUDENT_ID, JOIN_OR_LEAVE, TIME, COURSE_ID) VALUES (#{studentId}, #{joinOrLeave}, #{time}, #{courseId})
+    </insert>
+    <update id="update">
+    </update>
+</mapper>
