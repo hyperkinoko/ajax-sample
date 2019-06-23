@@ -71,7 +71,7 @@ public class MemberController {
     @PostMapping("/student/regist")
     public int setStudent(@RequestBody StudentForm form) {
         int memberId = form.getMemberId();
-        if(memberId != 0) {
+        if(memberId == 0) {
             Member m = new Member();
             m.setId(form.getId());
             m.setName(form.getName());
