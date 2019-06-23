@@ -2,7 +2,7 @@ package net.kinokolabo.reservation.model;
 
 
 public class StudentForm {
-	private int gardianId = 0; //hidden
+	private int guardianId = 0; //hidden
 	private int memberId = 0;
 	private int id = 0; //hidden
 	private String name = "";
@@ -18,12 +18,12 @@ public class StudentForm {
 	private int bMonth = 0;
 	private int bDay = 0;
 
-	public int getGardianId() {
-		return gardianId;
+	public int getGuardianId() {
+		return guardianId;
 	}
 
-	public void setGardianId(int gardianId) {
-		this.gardianId = gardianId;
+	public void setGuardianId(int guardianId) {
+		this.guardianId = guardianId;
 	}
 
 	public int getMemberId() {
