@@ -121,6 +121,7 @@ public class MemberController {
         v.setCourseId(model.getCourseId());
         v.setTime(Timestamp.valueOf(LocalDateTime.now()));
 
+        System.out.println(v.getTime());
         int inserted  = visitMapper.insert(v);
         if(inserted != 1) {
             return 0;
