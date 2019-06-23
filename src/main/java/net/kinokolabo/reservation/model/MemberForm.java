@@ -10,9 +10,10 @@ public class MemberForm {
 	private String zip = "";
 	private int pref = 0;
 	private String addr = "";
-	private String tel = "";
+	private String tel1 = "";
+	private String tel2 = "";
 	private String mail = "";
-	private String passwd = "";
+//	private String passwd = "";
 //	private String mailComfirm = "";
 
 	public int getId() {
@@ -39,17 +40,21 @@ public class MemberForm {
 		return addr;
 	}
 
-	public String getTel() {
-		return tel;
+	public String getTel1() {
+		return tel1;
+	}
+
+	public String getTel2() {
+		return tel2;
 	}
 
 	public String getMail() {
 		return mail;
 	}
 
-	public String getPasswd() {
-		return passwd;
-	}
+//	public String getPasswd() {
+//		return passwd;
+//	}
 
 
 	//	public String getMailComfirm() {

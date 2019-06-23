@@ -10,9 +10,10 @@ public class Member {
     private String zip = "";
     private String addr = "";
     private int pref = 0;
-    private String tel = "";
+    private String tel1 = "";
+    private String tel2 = "";
     private String mail = "";
-    private String passwd = "";
+//    private String passwd = "";
 
 
     public int getId() {
@@ -63,12 +64,20 @@ public class Member {
         this.pref = pref;
     }
 
-    public String getTel() {
-        return tel;
+    public String getTel1() {
+        return tel1;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setTel1(String tel) {
+        this.tel1 = tel;
+    }
+
+    public String getTel2() {
+        return tel2;
+    }
+
+    public void setTel2(String tel) {
+        this.tel2 = tel;
     }
 
     public String getMail() {
@@ -79,11 +88,11 @@ public class Member {
         this.mail = mail;
     }
 
-    public String getPasswd() {
-        return passwd;
-    }
-
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
-    }
+//    public String getPasswd() {
+//        return passwd;
+//    }
+//
+//    public void setPasswd(String passwd) {
+//        this.passwd = passwd;
+//    }
 }

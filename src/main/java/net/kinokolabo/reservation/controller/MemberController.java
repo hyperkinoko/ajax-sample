@@ -1,7 +1,9 @@
 package net.kinokolabo.reservation.controller;
 
 import net.kinokolabo.reservation.domain.Member;
+import net.kinokolabo.reservation.domain.Student;
 import net.kinokolabo.reservation.mapper.MemberMapper;
+import net.kinokolabo.reservation.mapper.StudentMapper;
 import net.kinokolabo.reservation.model.MemberForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,12 @@ public class MemberController {
     @Autowired
     MemberMapper memberMapper;
 
+    @Autowired
+    StudentMapper studentMapper;
+
     @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
     @GetMapping("/member")
-    public String getMember(@RequestParam(defaultValue = "0") String id, Model model) {
+    public Member getMember(@RequestParam(defaultValue = "0") String id) {
         Member member;
         try{
             int idInt = Integer.parseInt(id);
@@ -26,14 +31,13 @@ public class MemberController {
                 member = memberMapper.selectById(idInt);
             }
         } catch (NumberFormatException e) {
-            return "error";
+            return null;
         }
         if(member == null) {
-            return "error";
+            return null;
         }
         System.out.println("member: " + member.getName());
-        model.addAttribute("member", member);
-        return "member";
+        return member;
     }
 
     @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080"})
@@ -46,9 +50,10 @@ public class MemberController {
         m.setZip(form.getZip());
         m.setPref(form.getPref());
         m.setAddr(form.getAddr());
-        m.setTel(form.getTel());
+        m.setTel1(form.getTel1());
+        m.setTel2(form.getTel2());
         m.setMail(form.getMail());
-        m.setPasswd(form.getPasswd());
+//        m.setPasswd(form.getPasswd());
 
         int inserted = memberMapper.insert(m);
 
