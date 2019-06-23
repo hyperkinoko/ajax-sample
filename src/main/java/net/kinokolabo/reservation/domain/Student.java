@@ -6,7 +6,7 @@ public class Student {
 	private int id;
 	private int gardienId = 0;
 	private int memberId = 0;
-	private boolean notice = true;
+	private Notice notice = Notice.MAIL;
 	private Timestamp birthday;
 
 	public int getId() {
@@ -33,11 +33,11 @@ public class Student {
 		this.memberId = memberId;
 	}
 
-	public boolean isNotice() {
+	public Notice getNotice() {
 		return notice;
 	}
 
-	public void setNotice(boolean notice) {
+	public void setNotice(Notice notice) {
 		this.notice = notice;
 	}
 
