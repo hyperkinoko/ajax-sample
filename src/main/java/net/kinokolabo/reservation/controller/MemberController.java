@@ -44,7 +44,6 @@ public class MemberController {
         if(member == null) {
             return null;
         }
-        System.out.println("member: " + member.getName());
         return member;
     }
 
@@ -90,7 +89,6 @@ public class MemberController {
 
             if(memberMapper.insert(m) == 1) {
                 memberId = m.getId();
-                System.out.println("memberid:" + memberId);
             } else {
                 return 0;
             }
@@ -98,7 +96,6 @@ public class MemberController {
 
         Student s = new Student();
         s.setMemberId(memberId);
-        System.out.println("gid:" + form.getGuardianId());
         s.setGuardianId(form.getGuardianId());
         s.setNotice(form.isNotice() ? Notice.MAIL : Notice.NONE);
         LocalDateTime birthday = LocalDateTime.of(form.getbYear(), form.getbMonth(), form.getbDay(), 0, 0, 0);
@@ -106,7 +103,6 @@ public class MemberController {
 
         int inserted = studentMapper.insert(s);
         if(inserted == 1) {
-            System.out.println("studentid:" + s.getId());
             return s.getId();
         } else {
             return 0;
