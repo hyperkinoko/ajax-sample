@@ -1,6 +1,8 @@
 package net.kinokolabo.reservation.controller;
 
+import com.sendgrid.Email;
 import net.kinokolabo.reservation.domain.*;
+import net.kinokolabo.reservation.logic.Logic;
 import net.kinokolabo.reservation.mapper.MemberMapper;
 import net.kinokolabo.reservation.mapper.StudentMapper;
 import net.kinokolabo.reservation.mapper.VisitMapper;
@@ -114,19 +116,34 @@ public class MemberController {
     @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080", "192.168.*"})
     @PostMapping("/student/visit")
     public int setStudent(@RequestBody VisitModel model) {
+        int studentId = model.getStudentId();
+        JoinOrLeave jorl = JoinOrLeave.valueOf(model.getJoinOrLeave());
 
         Visit v = new Visit();
-        v.setStudentId(model.getStudentId());
-        v.setJoinOrLeave(JoinOrLeave.valueOf(model.getJoinOrLeave()));
+        v.setStudentId(studentId);
+        v.setJoinOrLeave(jorl);
         v.setCourseId(model.getCourseId());
         v.setTime(Timestamp.valueOf(LocalDateTime.now()));
 
         int inserted  = visitMapper.insert(v);
-        if(inserted == 1) {
-            return v.getId();
-        } else {
+        if(inserted != 1) {
             return 0;
         }
+
+        //メールを送る
+        Student student = studentMapper.selectById(studentId);
+        Member mStudent = memberMapper.selectById(student.getMemberId());
+        if(student.getNotice() == Notice.MAIL) {
+            Member guardian = memberMapper.selectById(student.getGuardianId());
+            String mail = guardian.getMail();
+            if(mail != null && !mail.equals("")) {
+                System.out.println(v.getJoinOrLeave() + " => send mail to:" + mail);
+                if(!new Logic().sendMail(mStudent.getName(), jorl, new Email(mail))) {
+                    return 0;
+                }
+            }
+        }
+        return v.getId();
     }
 }
 
