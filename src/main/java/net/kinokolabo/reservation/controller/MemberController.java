@@ -8,13 +8,9 @@ import net.kinokolabo.reservation.mapper.StudentMapper;
 import net.kinokolabo.reservation.model.MemberForm;
 import net.kinokolabo.reservation.model.StudentForm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestController
@@ -97,7 +93,7 @@ public class MemberController {
 
         Student s = new Student();
         s.setMemberId(memberId);
-        s.setGardienId(form.getGardianId());
+        s.setGuardienId(form.getGardianId());
         s.setNotice(form.isNotice() ? Notice.MAIL : Notice.NONE);
         LocalDateTime birthday = LocalDateTime.of(form.getbYear(), form.getbMonth(), form.getbDay(), 0, 0, 0);
         s.setBirthday(Timestamp.valueOf(birthday));

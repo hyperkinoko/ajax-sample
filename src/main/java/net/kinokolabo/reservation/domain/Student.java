@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Student {
 	private int id;
-	private int gardienId = 0;
+	private int guardienId = 0;
 	private int memberId = 0;
 	private Notice notice = Notice.MAIL;
 	private Timestamp birthday;
@@ -17,12 +17,12 @@ public class Student {
 		this.id = id;
 	}
 
-	public int getGardienId() {
-		return gardienId;
+	public int getGuardienId() {
+		return guardienId;
 	}
 
-	public void setGardienId(int gardienId) {
-		this.gardienId = gardienId;
+	public void setGuardienId(int guardienId) {
+		this.guardienId = guardienId;
 	}
 
 	public int getMemberId() {
