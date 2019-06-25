@@ -155,7 +155,7 @@ public class MemberController {
                 }
             }
         }
-        return "dd:" + v.getId();
+        return "OK:" + v.getId();
     }
 
     @CrossOrigin
