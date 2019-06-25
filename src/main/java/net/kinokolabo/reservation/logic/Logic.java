@@ -15,7 +15,7 @@ public class Logic {
         mail.setTo(to);
         mail.setFrom(new Email("kinokolabo-visit@kinokodata.net"));
         mail.setSubject("【もくもく会】" + name + "さんが" +joinOrLeave.getActionName() + "しました");
-        String mess = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH時mm分、", Locale.JAPAN));
+        String mess = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH時mm分、"));
         if(joinOrLeave == JoinOrLeave.JOIN) {
             mess += "もくもく会に" + name + "さんが入室しました。";
         } else {
