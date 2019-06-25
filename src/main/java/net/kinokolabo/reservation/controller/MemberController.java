@@ -1,5 +1,12 @@
 package net.kinokolabo.reservation.controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.sendgrid.Email;
 import net.kinokolabo.reservation.domain.*;
 import net.kinokolabo.reservation.logic.Logic;
@@ -10,10 +17,18 @@ import net.kinokolabo.reservation.model.MemberForm;
 import net.kinokolabo.reservation.model.StudentForm;
 import net.kinokolabo.reservation.model.VisitModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Hashtable;
 
 @RestController
 public class MemberController {
@@ -142,5 +157,43 @@ public class MemberController {
         }
         return "dd:" + v.getId();
     }
+
+    @CrossOrigin
+//    @CrossOrigin(origins = {"https://kinokodata.net", "http://localhost:8080", "192.168.*"})
+    @GetMapping("/qrcode/create")
+    @ResponseBody
+    public HttpEntity<byte[]> getQRCode(@RequestParam int id) {
+        String contents = "http://localhost:8080/#/student/visit?id=" + id;
+        BarcodeFormat format = BarcodeFormat.QR_CODE;
+        int width = 200;
+        int height = 200;
+
+        try {
+
+            Hashtable hints = new Hashtable();
+            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
+
+            QRCodeWriter writer = new QRCodeWriter();
+            BitMatrix bitMatrix = writer.encode(contents, format, width, height, hints);
+            BufferedImage qrcode = MatrixToImageWriter.toBufferedImage(bitMatrix);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(qrcode, "png", byteArrayOutputStream);
+            byte[] bytesOfImage = byteArrayOutputStream.toByteArray();
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_PNG);
+            headers.setContentLength(bytesOfImage.length);
+
+            return new HttpEntity<byte[]>(bytesOfImage, headers);
+
+        } catch (WriterException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
 
