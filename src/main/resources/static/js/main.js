@@ -101,8 +101,9 @@ function getAndReflectOpenData() {
             openData = JSON.parse(JSON.stringify(data));
             reflect();
         })
-        .fail(function() {
+        .fail(function(error) {
             // 通信失敗時の処理を記述
+
         });
 }
 
